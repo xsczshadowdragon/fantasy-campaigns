@@ -1,7 +1,7 @@
 Fantasy campaigns is a turn-based strategy game where players obtain territories, manage a civilization, build economies & armies, and compete with others to complete objectives and achieve victory.
 
 ### Movement
-Moving any unit is from region to region.
+Movement is for moving any unit in the game from region to region. While a unit is in movement it is visible to other players and vulnerable to be attacked. It takes 5 turns for a unit to move from region to region.
 
 ### Turn-based
 Each player in a campaign gets a turn to spend their resources and perform an action for their civilization. Players should enable notifications for the channel so that they will know when other players have finished their turn. The host of the campaign will monitor player turns to make sure they are playing. Any player who does not perform enough turns in a day will be ejected from the campaign. Every turn a civilization generates money, resources, population, and reputation.
