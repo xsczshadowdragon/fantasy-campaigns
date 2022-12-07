@@ -14,11 +14,18 @@ body {
     background-color: rgb(27, 27, 27);
     color: white;
     padding: 20px;
-    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-h3 {
+h1, h2, h3 {
     color: rgb(98, 206, 96);
+}
+
+p {
+    max-width: 800px;
 }
 
 </style>
@@ -27,18 +34,24 @@ h3 {
 
 <body>
 
-    <h3>About</h3>
+    <h1>Fantasy Campaigns Guide</h1>
     <p>Fantasy campaigns is a turn-based strategy game where players obtain territories, manage a civilization, build economies
     & armies, and compete with others to complete objectives and achieve victory.</p>
 
-    <button onclick="toggle_page('tutorial')">Tutorial</button>
-    <button onclick="toggle_page('rules')">Rules</button>
-    <button onclick="toggle_page('wiki')">Wiki</button>
+    <h2 id="page-header">Tutorial</h2>
+
+    <div>
+        <button onclick="toggle_page('tutorial')">Tutorial</button>
+        <button onclick="toggle_page('rules')">Rules</button>
+        <button onclick="toggle_page('wiki')">Wiki</button>
+    </div>
 
     <div id="tutorial"
          style="display: flex;
-                flex-direction: column;">
-        
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;">
+         
          <h3>Movement</h3>
          <p>Moving any unit from region to region takes 5 turns.</p>
 
@@ -107,7 +120,9 @@ h3 {
 
     <div id="rules"
          style="display: none;
-                flex-direction: column;">
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;">
 
          <h3>Switching civilizations</h3>
          <p>Once a player joins a civilization they have a few days to switch if they change their mind. However a player can only
@@ -125,10 +140,12 @@ h3 {
 
     <div id="wiki"
          style="display: none;
-                flex-direction: column;">
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;">
 
-         <h3>Wiki</h3>
-         
+         <h3>Categories</h3>
+
          <div>
             <button>Ancestries</button>
             <button>Buildings</button>
@@ -145,6 +162,18 @@ h3 {
             document.getElementById(last_page).style.display = 'none'
             last_page = page
             document.getElementById(page).style.display = 'flex'
+            
+            if (page == 'tutorial') {
+                document.getElementById('page-header').innerHTML = "Tutorial"
+            }
+
+            if (page == 'rules') {
+                document.getElementById('page-header').innerHTML = "Rules"
+            }
+
+            if (page == 'wiki') {
+                document.getElementById('page-header').innerHTML = "Wiki"
+            }
         }
 
     </script>
