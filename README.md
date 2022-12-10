@@ -1,1 +1,1 @@
-Fantasy campaigns is a turn-based strategy game where players obtain territories, manage a civilization, build economies & armies, and compete with others to complete objectives and achieve victory.
+Fantasy campaigns is a role-play turn-based game where players make a character and join a civilization and compete.
