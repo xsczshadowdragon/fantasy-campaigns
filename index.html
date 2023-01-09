@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legend and Myth</title>
+
+    <style>
+
+        #main {
+            display: flex;
+            flex-direction: column;
+            background-color: blue;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            color: white;
+            padding: 5px;
+        }
+
+        .panel {
+            background-color: rgb(180, 180, 180);
+            margin: 10px;
+            padding: 10px;
+            border: 2px solid black;
+            outline: 2px solid rgb(180, 180, 180);
+            width: max-content;
+            height: max-content;
+            color: black;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .layoutRow {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .layoutColumn {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modifier p {
+            margin-right: 10px;
+        }
+
+        p {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        button {
+            margin: 1px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="main">
+
+        <div class="panel">
+
+            <div class="layoutRow">
+
+                <button onclick="pageSwitch('pageHome')">Home</button>
+                <button onclick="pageSwitch('pageDemo')">Demo</button>
+                <button onclick="pageSwitch('pageGuide')">Guide</button>
+                <button onclick="pageSwitch('pageInterface')">Interface</button>
+                <button onclick="pageSwitch('pageCharacterGenerator')">Character Generator</button>
+    
+            </div>
+
+        </div>
+
+
+        <div id="pageHome" style="display: flex;">
+
+            <div class="panel">
+
+                <p id="homeWelcome" style="width: 550px;">
+
+                    Welcome to the home site of Legend and Myth.
+                    Legend and myth is a browser-based, text-based RPG game made with javascript.
+                    Be sure to check out the guide to learn about the game.
+        
+                </p>
+
+            </div>
+
+        </div>
+
+        <div id="pageGuide" style="display: none;">
+
+            <div class="panel" style="height: max-content;">
+
+                <div class="layoutColumn" style="width: 200px;">
+
+                    <button onclick="guideSwitch('guideAttributes')">Attributes</button>
+                    <button onclick="guideSwitch('guideAncestries')">Ancestries</button>
+                    <button onclick="guideSwitch('guideBeastiary')">Beastiary</button>
+                    <button onclick="guideSwitch('guideCharacterCreation')">Character Creation</button>
+                    <button onclick="guideSwitch('guideCraftingAndResources')">Crafting and Resources</button>
+                    <button onclick="guideSwitch('guideDamageTypesAndConditions')">Damage types and Conditions</button>
+                    <button onclick="guideSwitch('guideInventorySystem')">Inventory System</button>
+                    <button onclick="guideSwitch('guideJobs')">Jobs</button>
+                    <button onclick="guideSwitch('guideMagicAndSkillsTree')">Magic and Skills tree</button>
+                    <button onclick="guideSwitch('guideFactions')">Factions</button>
+                    <button onclick="guideSwitch('guideProficiencies')">Proficiencies</button>
+                    <button onclick="guideSwitch('guideTheWorld')">The World</button>
+                    <button onclick="guideSwitch('guideWeaponsShieldsAndArmor')">Weapons, Shields, and Armor</button>
+    
+                </div>
+
+            </div>
+
+            <div class="panel">
+
+                <div id="guideContent" 
+                     style="width: 600px;
+                            height: 700px;
+                            overflow-y: auto;">
+
+                    <div id="guideWelcome" style="display: block;">
+                        
+                        Welcome to the guide. Select a category to learn about legend and myth.
+    
+                    </div>
+    
+                    <div id="guideAttributes" style="display: none">
+    
+                        <b style="font-size: 22px;">Attributes</b>
+                        <br><br>
+    
+                        <b>Base Attributes</b>
+                        <br><br>
+    
+                        Strength: Melee damage<br>
+                        Constitution: Health points<br>
+                        Dexterity: Chance to hit, chance to critical hit, chance to evade<br>
+                        Intelligence: Problem solving, crafting bonus,<br>
+                        Wisdom: Spell power, spell resistance<br>
+                        Charisma: Relationships
+                        <br><br>
+    
+                        <b>Multipliers</b>
+                        <br><br>
+    
+                        For every certain amount of points you put into a stat, 
+                        it increases stats related to that attribute.
+                        You only receive a bonus multiplier when you reach the required amount 
+                        of points for that stat. For example look at this template of a starter character at level 1.
+                        <br><br>
+    
+                        Strength: +1 x0.1<br>
+                        Constitution: +1 x0.1<br>
+                        Dexterity: +1 x0.1<br>
+                        Intelligence: +1 x0.1<br>
+                        Wisdom: +1 x0.1<br>
+                        Charisma: +1 x0.1
+                        <br><br>
+    
+                        All of their stats are below +4 so they only have a x0.1 multiplier.
+                        However, we will update some stats and then see what happens.
+                        <br><br>
+    
+                        Strength: +4 x0.3<br>
+                        Constitution: +2 x0.1<br>
+                        Dexterity: +3 x0.1<br>
+                        Intelligence: +4 x0.3<br>
+                        Wisdom: +2 x0.1<br>
+                        Charisma: +1 x0.1
+                        <br><br>
+    
+                        Strength and intelligence received a x0.3 multipier because it reached +4.
+                        The trend continues onward each time, but as you level up, the requirement gets higher.
+    
+                    </div>
+                        
+                    <div id="guideAncestries" style="display: none;">
+    
+                        <b style="font-size: 22px;">Ancestries</b>
+                        <br><br>
+    
+                        <b>Half-giants</b>
+                        <br><br>
+    
+                        The descendents of giants.
+                        <br><br>
+    
+                        - +5% melee damage & throwing damage
+                        <br><br>
+    
+                        <b>Humans</b>
+                        <br><br>
+    
+                        The most common ancestry in the lands. 
+                        They are versatile and resilient.
+                        <br><br>
+    
+                        - +10% progression in any skill tree
+                        <br><br>
+    
+                        <b>Elves</b>
+                        <br><br>
+    
+                        There are three kinds of elves known to the lands. 
+                        Royal elves, wild elves, and forsaken elves.
+                        <br><br>
+    
+                        - +10% effect with nature skills and nature magic<br>
+                        - +5% ranged damage
+                        <br><br>
+    
+                        <b>Dwarves</b>
+                        <br><br>
+    
+                        They like to drink, celebrate, and mine!
+                        <br><br>
+    
+                        - +5% damage resistance with armor<br>
+                        - +5% hammer & axe damage
+                        <br><br>
+    
+                        <b>Beastkin</b>
+                        <br><br>
+    
+                        Beings of an ancient curse. 
+                        Their kind is found throughout all the land, taking many forms.
+                        <br><br>
+    
+                        - Immune to disease and poison
+                        <br><br>
+    
+                        <b>Halflings</b>
+                        <br><br>
+    
+                        Though the smallest in size, their craftiness and agility 
+                        makes them some of the greatest rogues in all the land.
+                        <br><br>
+    
+                        - +10% with all rogue abilities
+    
+                    </div>
+    
+                    <div id="guideBeastiary" style="display: none;">
+    
+                        <b style="font-size: 22px;">Beastiary</b>
+                        <br><br>
+    
+                        <b>Gnome</b>
+                        <br><br>
+    
+                        Usually found underground, on farms, and in caves. 
+                        They are very small but powerful. They use alot of mind magic.
+                        <br><br>
+    
+                        <b>Orc</b> 
+                        <br><br>
+    
+                        They are a type of greenskins similar to goblins and trolls. 
+                        Like ogres, they have their own large civilizations. 
+                        Orcs are slightly less brutish than ogres.
+                        <br><br>
+    
+                        <b>Goblin</b>
+                        <br><br>
+    
+                        Like orcs only smaller. Their culture is more related to mischief and 
+                        cunningness in comparison to orcs.
+                        <br><br>
+    
+                        <b>Troll</b>
+                        <br><br>
+    
+                        Trolls live in smaller groups than orcs and goblins. 
+                        They are the least organized of the greenskins and are very independent.
+                        <br><br>
+    
+                        <b>Vampire</b>
+                        <br><br>
+    
+                        Bloodthirsty creatures that thrive in the night.
+                        Beware the dark places of the world for it is there that they lurk.
+                        <br><br>
+    
+                        <b>Werewolf</b>
+                        <br><br>
+    
+                        There are many types of were creatures, and the werewolf 
+                        may be the most well known. They are very quick and their 
+                        giant claws cause a plethora of conditions like bleeding and 
+                        disease, including lycanthropy which will turn the player into a werewolf.
+                        <br><br>
+    
+                        <b>Skeleton</b>
+                        <br><br>
+    
+                        <b>Giant bat</b>
+                        <br><br>
+    
+                        <b>Giant rat</b>
+                        <br><br>
+    
+                        <b>Lizardkin</b>
+                        <br><br>
+    
+                    </div>
+    
+                    <div id="guideCharacterCreation" style="display: none;">
+    
+                        <b style="font-size: 22px;">Character Creation</b>
+                        <br><br>
+    
+                        The first thing a player needs to do is create a character. 
+                        When a player creates a character, the first thing they choose is an ancestry. 
+                        In Legend and Myth, the player does not choose a class for their character 
+                        in the beginning. The player develops their character's class over time
+                        through choices in game. Class development is done through NPC trainers. 
+                        For example, in order to pursue the mage class archetype, one must seek out 
+                        a mage trainer. In the beginning of the game, the player can choose only one trainer. 
+                        However, at a higher level the player can then go on to be what is considered 
+                        "multi-class". In other words, if you want to multi-class as a mage/rogue you 
+                        would reach the required level and then seek out a rogue trainer. 
+                        After the player chooses an ancestry they then choose their character's name 
+                        and appearance.
+    
+                    </div>
+    
+                    <div id="guideCraftingAndResources" style="display: none;">
+    
+                        <b style="font-size: 22px;">Crafting and Resources</b>
+                        <br><br>
+    
+                        <b>Wood</b>
+                        <br><br>
+    
+                        Birch, maple, ash, oak, willow, pine, hickory, elm, spruce
+                        <br><br>
+    
+                        <b>Metals</b>
+                        <br><br>
+    
+                        Bronze, iron, steel, titanium
+                        <br><br>
+    
+                        <b>Crystals</b>
+                        <br><br>
+    
+                        Agate, amber, amethyst, aquamarine, aragonite, 
+                        azurite, bloodstone, citrine, diamond, emerald, tiger's eye,
+                        graphite, jade, jasper, onyx, obsidian, opal, pearl, quartz, 
+                        rainbow fluorite, ruby, sapphire, serpentine, topaz, turquoise, zircon
+                        <br><br>
+    
+                        <b>Vegetables</b>
+                        <br><br>
+    
+                        Wheat, rice, beans, potatoes, carrots, lettuce
+                        <br><br>
+    
+                        <b>Fruits</b>
+                        <br><br>
+    
+                        Apples, bananas, oranges
+                        <br><br>
+    
+                        <b>Livestock</b>
+                        <br><br>
+    
+                        Cheese, milk, fish meat, boar meat, brahmin meat, chicken meat
+                        
+                    </div>
+    
+                    <div id="guideDamageTypesAndConditions" style="display: none;">
+    
+                        <b style="font-size: 22px;">Damage Types and Conditions</b>
+                        <br><br>
+    
+                        <b>Physical damage types</b>
+                        <br><br>
+    
+                        Physical damage types are caused by non-magical weapons.
+                        <br><br>
+    
+                        - Hack: Swords, axes, some polearms, some traps<br>
+                        - Blunt: Maces, hammers, and martial arts<br>
+                        - Piercing: Most polearms, arrows, thrown weapons, some swords, some hammers, bullets<br>
+                        - Explosive: Bombs, traps, some bullets
+                        <br><br>
+    
+                        <b>Magical damage types</b>
+                        <br><br>
+    
+                        Magical damage types are from spells and some skills.
+                        <br><br>
+    
+                        - Holy: This is mostly effective against forbidden enemy types<br>
+                        - Forbidden: Necromancy, dark magic, shadow magic, blood magic<br>
+                        - Elemental: Fire, earth, water, air<br>
+                        - Physical: From spells like push, crush, and choke<br>
+                        - Mental: From mind magic
+                        <br><br>
+    
+                        <b>Conditions</b>
+                        <br><br>
+    
+                        These are conditions usually inflicted from melee combat and sometimes magic.
+                        <br><br>
+    
+                        - Bleeding<br>
+                        - Blindness<br>
+                        - Paralyzed<br>
+                        - Muted: Cannot cast magic<br>
+                        - Exhaustion: Decreased energy for skills<br>
+                        - Wounded: Decreased total health<br>
+                        - Drained: Decreased mana<br>
+                        - Diseased: Spreads to allies and is hard to cure<br>
+                        - Accursed: If not remedied by a priest, the character will turn to the forbidden<br>
+                        - Vampirism: Causes by the bite of a vampire, and will convert the character over time<br>
+                        - Lycanthropy: Like vampirism, only it turns the character into a werewolf
+    
+                    </div>
+    
+                    <div id="guideInventorySystem" style="display: none;">
+    
+                        <b style="font-size: 22px;">Inventory System</b>
+                        <br><br>
+    
+                        A player holds items in storage containers that they have on their character. 
+                        For example, starting players have a small bag which can hold 10 items.
+                        If the player wants to increase their inventory space, they must purchase 
+                        additional storage containers. The player can have a maximum of 4 storage containers.
+                        Mounts can also have storage containers and hold items in addition to the
+                        player's storage containers. Players that choose the merchant job can purchase
+                        a caravan which acts as a mount and a large storage unit as well.
+    
+                    </div>
+    
+                    <div id="guideJobs" style="display: none;">
+    
+                        <b style="font-size: 22px;">Jobs</b>
+                        <br><br>
+    
+                        Jobs are an economic part of the game. The purpose of a job is for a 
+                        player to develop skills which later can help them in crafting or even 
+                        combat related skills. Each job has has repetitive tasks they can do to 
+                        level up in their job. At certain levels, the player earns abilities or skills 
+                        which can help them in game. Once the player reaches a specific level in their job, 
+                        they can choose a second job if they want.
+                        <br><br>
+    
+                        <b>Farmer</b>
+                        <br><br>
+    
+                        <b>Merchant</b>
+                        <br><br>
+    
+                        <b>Mason</b>
+                        <br><br>
+    
+                        <b>Carpenter</b>
+                        <br><br>
+    
+                        <b>Smith</b>
+                        <br><br>
+    
+                        <b>Tax collector</b>
+                        <br><br>
+    
+                        <b>Noble</b>
+                        <br><br>
+    
+                        <b>Guard</b>
+                        <br><br>
+    
+                        <b>Scholar</b>
+                        <br><br>
+    
+                        <b>Soldier</b>
+                        <br><br>
+    
+                        <b>Officer</b>
+                        <br><br>
+    
+                        <b>Entertainer</b>
+                        <br><br>
+    
+                        <b>Explorer</b>
+                        <br><br>
+    
+                        <b>Hunter</b>
+    
+                    </div>
+    
+                    <div id="guideMagicAndSkillsTree" style="display: none;">
+    
+                        <b style="font-size: 22px;">Magic</b>
+                        <br><br>
+    
+                        <b>Forbidden magic</b>
+                        <br><br>
+                    
+                        Ancient dark magic which is forbidden to use across all the empires.
+                        There are some who have chosen to seek the path of evil
+                        and study the tomes which grant the user terrible power.
+                        <br><br>
+    
+                        <b>Holy magic</b>
+                        <br><br>
+    
+                        Magic used for healing and protection. However, it can be very powerful
+                        when used against the undead and forsaken mages.
+                        <br><br>
+    
+                        <b>Arcane magic</b>
+                        <br><br>
+    
+                        Mysterious and complex. Arcane magic is the preference of most wizards.
+                        It is considered to be magic of space and time.
+                        <br><br>
+    
+                        <b>Spirit magic</b>
+                        <br><br>
+    
+                        Shamans and ritualists tap into the spirit world to learn powerful
+                        spells from those who have died long ago. Spirit magic is not always
+                        from evil sources. Some spirit magic calls upon saints of old.
+                        <br><br>
+    
+                        <b>Mind magic</b>
+                        <br><br>
+    
+                        Usually those using this magic are up to no good. Spells meant to manipulate
+                        a creature's mind.
+                        <br><br>
+    
+                        <b>Rune magic</b>
+                        <br><br>
+    
+                        The dwarves long ago crafted magic spells using the stones and gems they found in the 
+                        deep mountain mines. It requires a special kind of soul to study it. Even the greatest
+                        wizards have been puzzled by it's essence.
+                        <br><br>
+    
+                        <b>Nature magic</b>
+                        <br><br>
+    
+                        The forces of nature are wild and raw. Venture into the wildnerness and perhaps
+                        one can tap into it's source. At the highest mountain peak, in the depth of the ocean,
+                        in the shade of the forests.
+                        <br><br> 
+    
+                        <b>Dragon magic</b>
+                        <br><br>
+    
+                        It is a peculiar kind of magic which draws upon many other kinds of magic in combination.
+                        The problem with it is that it's not easy to learn magic from a dragon that isn't fond
+                        of your presence.
+                        <br><br>
+    
+                        <b>Elemental magic</b>
+                        <br><br>
+    
+                        Fire, earth, air, and water. Not all mages can master all of the elements,
+                        for it has nearly never been done but by a few.
+                        <br><br>
+    
+                        <b style="font-size: 22px;">Combat</b>
+                        <br><br>
+    
+                        <b>Tactics</b>
+                        <br><br>
+    
+                        <b>Martial arts</b>
+                        <br><br>
+    
+                        <b>Berserking</b>
+                        <br><br>
+    
+                        <b style="font-size: 22px;">Weaponmastery</b>
+                        <br><br>
+    
+                        <b>Bows</b>
+                        <br><br>
+    
+                        <b>Explosives</b>
+                        <br><br>
+    
+                        <b>Crossbows and guns</b>
+                        <br><br>
+    
+                        <b>Throwing weapons</b>
+                        <br><br>
+    
+                        <b>Swords and axes</b>
+                        <br><br>
+    
+                        <b>Hammers and maces</b>
+                        <br><br>
+    
+                        <b>Polearms</b>
+                        <br><br>
+    
+                        <b style="font-size: 22px;">Arts</b>
+                        <br><br>
+    
+                        <b>Rogue arts</b>
+                        <br><br>
+    
+                        <b>Nature and survival</b>
+                        <br><br>
+    
+                        <b>Music and lore</b>
+                        <br><br>
+    
+                        <b>Beastmastery</b>
+                        <br><br>
+    
+                        <b>Alchemy</b>
+                        <br><br>
+    
+                        <b>Engineering</b>
+    
+                    </div>
+    
+                    <div id="guideFactions" style="display: none;">
+    
+                        <b style="font-size: 22px;">Factions</b>
+                        <br><br>
+    
+                        <b style="font-size: 22px;">World Dragons</b><br>
+                        <b>Ancestry:</b> Dragons<br>
+                        <b>Morality:</b> Neutral<br>
+                        <b>Personality:</b> Proud, greedy<br>
+                        <b>Enemies:</b> Giants of Old, Keepers of the Crystals<br>
+                        <b>Allies:</b> None
+                        <br><br>
+    
+                        Creatures that stood the test of time. They are known for hoarding gems, 
+                        gold and silver. Dragons are found all over the world. They thrive independently. 
+                        Dragons and dwarves have always had a strong rivalry because they compete for 
+                        the rare stones hiding in the mountains.
+                        <br><br>
+    
+                        <b style="font-size: 22px;">Urlog's Empire</b><br>
+                        <b>Ancestry:</b> Ogres<br>
+                        <b>Morality:</b> Evil<br>
+                        <b>Personality:</b> Primal<br>
+                        <b>Enemies:</b> Giants of Old<br>
+                        <b>Allies:</b> None
+                        <br><br>
+    
+                        Though primal as they are, the ogres have established one of the 
+                        largest and vastest empires. The bulk of the ogre horde is in the 
+                        plains and deserts of Ginivid. The ogre-king of the ogric empire is Urlog,
+                        known as the buzzard-king for his fascination with bones.
+                        Long ago Urlog hunted many giants and used their bones to fashion his fortress.
+                        This gave him a gruesome and cruel reputation.
+                        <br><br>
+    
+                        <b style="font-size: 22px;"> Keepers of the Crystals</b><br>
+                        <b>Ancestry:</b> Naga<br>
+                        <b>Morality:</b> Neutral<br>
+                        <b>Personality:</b> Mystical<br>
+                        <b>Enemies:</b> Forsaken, World Dragons<br>
+                        <b>Allies:</b> None
+                        <br><br>
+    
+                        Mysterious and powerful serpents. They can communicate with mortals telepathically 
+                        and use powerful mind magics. They mostly live in the waters, but they can go on 
+                        land for long durations of time. They are known to hunt dragons for their hearts, 
+                        but their mind magic does not work well on them. They are the most feared enemy in 
+                        all the lands and seas.
+                        <br><br>
+    
+                        <b style="font-size: 22px;">The Red Claw</b><br>
+                        <b>Ancestry:</b> Kobold<br>
+                        <b>Morality:</b> Evil<br>
+                        <b>Personality:</b> Primal<br>
+                        <b>Enemies:</b> Goblins<br>
+                        <b>Allies:</b> None
+                        <br><br>
+    
+                        Red-skinned creatures that look similar to goblins, except they are known 
+                        for their hairy manes and variety of masks. They are known for their culture 
+                        of rituals and shamanism. Only sometimes will you see ogres and kobolds getting
+                        along. Kobolds sometimes work for dragons in acquiring gems and metals.
+                        <br><br>
+    
+                        <b style="font-size: 22px;">The Forsaken</b><br>
+                        <b>Ancestry:</b> Any<br>
+                        <b>Morality:</b> Evil<br>
+                        <b>Personality:</b> Sadistic<br>
+                        <b>Enemies:</b> All<br>
+                        <b>Allies:</b> None
+                        <br><br>
+    
+                        The forsaken are those who follow the way of Eneem, the god of corruption. 
+                        They are considered to be possessed. The longer they worship Eneem, the stronger 
+                        their bodies become. The most powerful of the forsaken cannot be slain by ordinary
+                        weapons.
+                        <br><br>
+    
+                        <b style="font-size: 22px;">Giants of Old</b><br>
+                        <b>Ancestry:</b> Giant<br>
+                        <b>Morality:</b> Good<br>
+                        <b>Personality:</b> Stoic<br>
+                        <b>Enemies:</b> Urlog's Empire, Dragons<br>
+                        <b>Allies:</b> None
+                        <br><br>
+    
+                        Most of their kind are gone, destroyed by the ogre horde and dragons.
+                        They have taken up hold in isolated places away from danger. Their lesser 
+                        kin the half-giants however exist in larger numbers and they're known for having 
+                        a grudge against the ogres and dragons alike.
+    
+                    </div>
+    
+                    <div id="guideProficiencies" style="display: none;">
+    
+                        <b style="font-size: 22px;">Proficiencies</b>
+                        <br><br>
+    
+                        Proficiencies are like skills. They are passive upgrades and allow your character
+                        to do unique things. They are outside of the skill tree and can give your
+                        character powerful combos such as making a battlemage character or allowing a thief
+                        to use two daggers at once.
+                        <br><br>
+    
+                        <b>Ambidextrous</b>
+                        <br><br>
+    
+                        Can wield a weapon in both hands
+                        <br><br>
+    
+                        <b>Master of Weapons</b>
+                        <br><br>
+    
+                        + dmg / all weapon types
+                        <br><br>
+    
+                        <b>Battlemage</b>
+                        <br><br>
+    
+                        Can wield a weapon or shield with a staff
+                        <br><br>
+    
+                        <b>One with the Weapon</b>
+                        <br><br>
+    
+                        + dmg / two-handed weapons
+                        <br><br>
+    
+                        <b>Magi</b>
+                        <br><br>
+    
+                        Can learn  magic
+                        <br><br>
+    
+                        <b>Skirmisher</b>
+                        <br><br>
+    
+                        Can carry more ammo
+    
+                    </div>
+    
+                    <div id="guideTheWorld" style="display: none;">
+    
+                        <b style="font-size: 22px;">The World</b>
+                        <br><br>
+    
+                        <b>Elonnia</b>
+                        <br><br>
+                        <b>Zenth</b>
+                        <br><br>
+                        <b>Alor</b>
+                        <br><br>
+                        <b>Ginivid</b>
+    
+                    </div>
+    
+                    <div id="guideWeaponsShieldsAndArmor" style="display: none;">
+    
+                        <b style="font-size: 22px;">Weapons</b>
+                        <br><br>
+    
+                        Weapons come in many types. There are one handed weapons, two handed weapons, 
+                        ranged weapons, throwing weapons, and special weapons like explosives and instruments. 
+                        Instruments are not used for melee attacks, but rather are needed for lore magic.
+                        <br><br>
+    
+                        <b>Damage types</b>
+                        <br><br>
+    
+                        The types of weapon damage are hack, blunt, piercing, and explosive. 
+                        Some weapons have combined damage types, like pikes, fencing swords, or hammer-picks.
+                        <br><br>
+    
+                        <b>Quality and Condition</b>
+                        <br><br>
+    
+                        Equipment comes in many different forms of quality or condition. Usually this quality is determined by whomever has crafted it.
+                        Depending on the skill of the crafter, the formula, and the materials used.
+                        <br><br>
+
+                        <b>Dual wielding, two handed weaponry, archery & throwing</b>
+                        <br><br>
+    
+                        Small weapons require a minimum of +4 dexterity to equip in your other-hand. Larger weapons wll require more. 
+                        Most two handed weapons require a minimum of +4 strength. 
+                        To use ranged weapons like bows, crossbows, and throwing weapons, a character needs +4 dexterity.
+                        <br><br>
+    
+                        <b>Swords</b>
+                        <br><br>
+    
+                        Swords are one of the most common weapons used by fighters and warriors.
+                        They come in a variety of types such as long swords, short swords, katanas, and
+                        fencing swords. Some swords can do both hacking and piercing damage. Short swords
+                        are a bit quicker and lighter in general. There are two handed swords also.
+                        <br><br>
+    
+                        <b>Daggers</b>
+                        <br><br>
+    
+                        Daggers are light, fast, and easy to conceal. They generally do piercing damage, though
+                        some do hacking also.
+                        <br><br>
+    
+                        <b>Axes</b>
+                        <br><br>
+    
+                        Axes do the most hacking damage of all the weapons. They tend to be a little heavier,
+                        but not as heavy as hammers. They can inflict bleeding conditions.
+                        <br><br>
+    
+                        <b>Hammers</b>
+                        <br><br>
+    
+                        Hammers cause crushing damage and can inflict crippling conditions. One-handed hammers
+                        are the heaviest of their kind.
+                        <br><br>
+    
+                        <b>Polearms</b>
+                        <br><br>
+    
+                        Polearms inflict the most damage compared to all the other weapons, but they are the heaviest
+                        type. Most polearms are two-handed weapons.
+    
+                        <br><br>
+    
+                        <b>Throwing weapons</b>
+                        <br><br>
+    
+                        There are many kinds of throwing weapons, usually if it's light enough, it can be thrown.
+                        There are also some special skills which allow characters to throw normal weapons.
+                        <br><br>
+    
+                        <b>Bows</b>
+                        <br><br>
+    
+                        Bows come as shortbows, longbows, and crossbows. However, crossbows are not affected
+                        by attributes that govern efficiency with standard bows.
+                        <br><br>
+    
+                        <b>Guns</b>
+                        <br><br>
+                        
+                        Guns can cause crushing damage, piercing damage, explosive damage, as well as inflict a
+                        variety of conditions. They are very effective but expensive to use.
+                        <br><br>
+    
+                        <b style="font-size: 22px;">Armor</b>
+                        <br><br>
+    
+                        <b>Clothes</b>
+                        <br><br>
+    
+                        Clothes are used by mage and rogue types which do not use armor. They do not provide
+                        much protection, however they can be enchanted such as mage robes or special clothing
+                        for sneaking.
+                        <br><br>
+    
+                        <b>Light armor</b>
+                        <br><br>
+    
+                        Light armor comes in a variety of materials such as leather, hide, and chainmail. However
+                        not all chainmail is considered to be light armor.
+                        <br><br>
+    
+                        <b>Heavy armor</b>
+                        <br><br>
+    
+                        Heavy armor is the toughest and heaviest. It is used by strongest of fighters and warriors.
+                        The most common types of heavy armor are bronze, iron, steel, and titanium.
+                        <br><br>
+    
+                        <b style="font-size: 22px;">Shields</b>
+                        <br><br>
+    
+                        <b>Light shields</b>
+                        <br><br>
+    
+                        Light shields do not offer as much protection as heavy shields, but they still can offer
+                        protection to the user. Light shields are usually made of a combination of wood, leather, hide, 
+                        and sometimes metal binding.
+                        <br><br>
+    
+                        <b>Heavy shields</b>
+                        <br><br>
+    
+                        Heavy shields can be as tall as a man. Heavy shields are not for the faint of heart as they require
+                        alot of stamina to use them. Most heavy shields are made of bronze, iron, steel, and titanium.
+    
+                    </div>
+    
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="pageInterface" 
+             style="display: none;
+                    flex-direction: column; 
+                    overflow-y: auto;
+                    margin-left: 10px;">
+
+            <p>Controls</p><br>
+            <p>
+                Key assignments.<br>
+                Interact for action with npcs, locations, objects.
+            </p>
+            <div id="panelControls" class="panel" style="display: flex; flex-direction: column;">
+
+                <p style="margin-bottom: 10px;">General :</p>
+                <div class="layoutRow">
+
+                    <div class="layoutColumn">
+
+                        <div class="layoutRow"><p style="margin-right: 5px;">Move up:</p><p>↑</p></div>
+                        <div class="layoutRow"><p style="margin-right: 5px;">Move down:</p><p>↓</p></div>
+                        <div class="layoutRow"><p style="margin-right: 5px;">Move right:</p><p>→</p></div>
+                        <div class="layoutRow"><p style="margin-right: 5px;">Move left:</p><p>←</p></div>
+                        <div class="layoutRow"><p style="margin-right: 5px;">Interact:</p><p>spacebar</p></div>
+
+                    </div>
+
+                </div>
+
+                <p style="margin-bottom: 10px; margin-top: 10px;">Battle :</p>
+                <div class="layoutRow">
+
+                    <div class="layoutColumn" >
+
+                        <div class="layoutRow"><p style="margin-right: 5px;">Attack:</p><p>q</p></div>
+                        <div class="layoutRow"><p style="margin-right: 5px;">Skill:</p><p>w</p></div>
+                        <div class="layoutRow"><p style="margin-right: 5px;">Spell:</p><p>e</p></div>
+                        <div class="layoutRow"><p style="margin-right: 5px;">Item:</p><p>r</p></div>
+                        <div class="layoutRow"><p style="margin-right: 5px;">Escape:</p><p>t</p></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p>Battle</p>
+            <div id="panelBattle" class="panel" style="width: 500px;">
+
+                <div class="layoutRow" 
+                     style="padding-bottom: 10px;">
+
+                    <div id="contBattleAllies" 
+                         style="width: 100%;
+                                border-right: 1px solid black;">
+
+                        <p>Ally 1 100 / 100</p>
+                        <p>Ally 2 100 / 100</p>
+                        <p>Ally 3 100 / 100</p>
+                        <p>Ally 4 100 / 100</p>
+                        <p>Ally 5 100 / 100</p>
+
+                    </div>
+
+                    <div id="contBattleEnemies" 
+                         style="width: 100%;
+                                margin-left: 10px;">
+
+                        <p>Enemy 1 100 / 100</p>
+                        <p>Enemy 2 100 / 100</p>
+                        <p>Enemy 3 100 / 100</p>
+                        <p>Enemy 4 100 / 100</p>
+                        <p>Enemy 5 100 / 100</p>
+
+                    </div>
+
+                </div>
+
+                <div class="layoutColumn" 
+                     style="border-top: 1px solid black;
+                            padding-top: 10px;">
+
+                    <div id="intCombatOutput" 
+                         style="overflow-y: auto; 
+                                height: 100px;">
+
+                        <p>Enemy attacks player.</p>
+                        <p>Player uses item.</p>
+                        <p>Enemy attacks player.</p>
+                        <p>Player attacks enemy.</p>
+                        <p>Ally attacks enemy.</p>
+                        <p>Enemy attacks ally.</p>
+                        <p>Player attacks enemy.</p>
+                        <p>Player attacks enemy.</p>
+                        <p>Player attacks enemy.</p>
+                        <p>Player attacks enemy.</p>
+                        <p>Player attacks enemy.</p>
+                        <p>Player attacks enemy.</p>
+                        <p>Player attacks enemy.</p>
+                        <p>Player attacks enemy.</p>
+        
+                    </div>
+
+                    <div id="intCombatActions">
+
+                        <div class="layoutRow" style="margin-top: 10px;">
+
+                            <button>Attack</button>
+                            <button>Skill</button>
+                            <button>Spell</button>
+                            <button>Item</button>
+                            <button>Escape</button>
+
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p>Menu</p>
+            <div id="panelMenu" class="panel">
+
+                <button>Character</button>
+                <button>Inventory</button>
+                <button>Journal</button>
+                <button>Map</button>
+                <button>Spells</button>
+                <button>Skills</button>
+                <button>Settings</button>
+                <button>Help</button>
+
+            </div>
+
+            <p>Map</p><br>
+            <p>
+                Maps vary in cell size.<br>
+                First line at top indicates current map you on.<br>
+                Second line indicates cell you on.<br>
+                Focus can be anything in cell like object, npc, enemy, or building/new location.
+                
+            </p>
+            <div id="panelMap" class="panel">
+
+                <div class="layoutColumn">
+
+                    <div class="layoutColumn" 
+                         style="align-items: center; 
+                                justify-content: center;
+                                margin-bottom: 10px;
+                                height: 50px;">
+
+                        <p>Location</p>
+                        <p>Focus</p>
+
+                    </div>
+
+                    <div id="contMap" style="font: 20px Courier New;">
+
+                        [ ][ ][ ][ ][ ]<br>
+                        [ ][ ][ ][ ][ ]<br>
+                        [ ][ ][@][ ][ ]<br>
+                        [ ][ ][ ][ ][ ]<br>
+                        [ ][ ][ ][ ][ ]
+            
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p>Output</p><br>
+            <p>
+                This is the output log for in game events such as ambient sounds, 
+                information on a cell, or an NPC speaking.
+            </p>
+            <div id="panelIO" class="panel">
+
+                <div class="layoutColumn" 
+                     style="width: 500px;
+                            height: 150px;
+                            overflow-y: auto;">
+
+                        <p>Enemy attacks player.</p>
+                        <p>Player uses item.</p>
+                        <p>(ambient sound plays)</p>
+                        <p>(enemy says something)</p>
+                        <p>Player travels to place.</p>
+                        <p>NPC speaks to player.</p>
+                        <p>(player action)</p>
+                        <p>Enemy attacks player.</p>
+                        <p>Player uses item.</p>
+                        <p>(ambient sound plays)</p>
+                        <p>(enemy says something)</p>
+                        <p>Player travels to place.</p>
+                        <p>NPC speaks to player.</p>
+                        <p>(player action)</p>
+
+                </div>
+
+            </div>
+            
+            <p>Character</p>
+            <div id="panelCharacter" class="panel">
+
+                <p>Name:</p>
+                <p>Level:</p>
+                <p>Experience:</p>
+                <p>Ancestry:</p>
+                <p>Class:</p>
+                <p>Alignment:</p>
+                <p>Reputation:</p><br>
+
+                <p>Strength:</p>
+                <p>Dexterity:</p>
+                <p>Constitution:</p>
+                <p>Intelligence:</p>
+                <p>Wisdom:</p>
+                <p>Charisma:</p>
+
+            </div>
+
+            <p>Inventory</p>
+            <div id="panelInventory" class="panel">
+
+                <p style="margin-bottom: 10px;">Gold:</p>
+
+                <div id="contInventoryMenu" style="margin-bottom: 10px;">
+
+                    <button>Weapons</button>
+                    <button>Armor</button>
+                    <button>Potions</button>
+                    <button>Food/Drink</button>
+                    <button>Quest</button>
+                    <button>Materials</button>
+
+                </div>
+
+                <p>Item 1</p>
+                <p>Item 2</p>
+                <p>Item 3</p>
+                <p>Item 4</p>
+                <p>Item 5</p>
+
+            </div>
+
+            <p>Journal</p>
+            <div id="panelJournal" class="panel">
+
+                <div id="contJournalMenu" style="margin-bottom: 10px;">
+
+                    <button>Current</button>
+                    <button>Finished</button>
+
+                </div>
+
+                <p>Quest 1</p>
+                <p>Quest 2</p>
+                <p>Quest 3</p>
+                <p>Quest 4</p>
+                <p>Quest 5</p>
+
+            </div>
+
+        </div>
+
+        <div id="pageDemo" style="display: none;">
+
+            <div class="layoutColumn" 
+             style="align-items: center;
+                    justify-content: center;">
+
+                <div class="panel">
+
+                    <div class="layoutColumn">
+        
+                        <div class="layoutColumn" 
+                            style="align-items: center; 
+                                    margin-bottom: 10px;
+                                    height: 35px;">
+        
+                            <p id="playerLocation">Beginner's Realm</p>
+                            <p id="playerFocus"></p>
+        
+                        </div>
+
+                        <div id="map" 
+                                class="container"
+                                style="font: 20px Courier New;
+                                    align-items: center;
+                                    justify-content: center;">
+
+                        </div>
+
+                    </div>
+        
+                </div>
+        
+                <div class="panel">
+        
+                    <div id="output" class="layoutColumn"
+                         style="width: 500px;
+                                height: 150px;
+                                padding-right: 5px;
+                                overflow-y: auto;">
+
+                        <p>
+                            Ominous voice: Greetings adventurer. Many have come and gone
+                            from this place, but now it is your time. Go and discover your destiny.
+                        </p>
+        
+                    </div>
+        
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="pageCharacterGenerator"
+             style="display: none;
+                    flex-direction: row;">
+                
+            <div class="layoutColumn">
+
+                <p>Character Generator</p>
+                <div class="panel">
+
+                    <div class="layoutColumn">
+
+                    <p>Ancestry:</p>
+                    <select name="" id="">
+
+                        <option value="">Human</option>
+                        <option value="">Dwarf</option>
+                        <option value="">Halfling</option>
+                        <option value="">Half-giant</option>
+                        <option value="">Elf</option>
+
+                    </select>
+            
+                    </div>
+            
+                    <p>Name:</p>
+                    <input type="text">
+            
+                    <p>Class:</p>
+                    <select name="" id="">
+            
+                        <option value="fighter">Fighter</option>
+                        <option value="rogue">Rogue</option>
+                        <option value="mage">Mage</option>
+                        <option value="fighterRogueMage">Fighter / Rogue / Mage</option>
+                        <option value="fighterRogue">Fighter / Rogue</option>
+                        <option value="fighterMage">Fighter / Mage</option>
+                        <option value="rogueMage">Rogue / Mage</option>
+
+                    </select>
+            
+                </div>
+
+            </div>
+
+            <div class="layoutColumn">
+
+                <p>Attributes</p>
+                <div class="panel">
+
+                    <div class="layoutRow modifier">
+
+                        <p>Strength:</p>
+                        <p id="strength" class="attribute value">+1</p>
+                        <button onclick="decreaseAttribute('strength')">-</button>
+                        <button onclick="increaseAttribute('strength')">+</button>
+
+                    </div>
+
+                    <div class="layoutRow modifier">
+
+                        <p>Constitution:</p>
+                        <p id="constitution" class="attribute value">+1</p>
+                        <button onclick="decreaseAttribute('constitution')">-</button>
+                        <button onclick="increaseAttribute('constitution')">+</button>
+
+                    </div>
+
+                    <div class="layoutRow modifier">
+
+                        <p>Dexterity:</p>
+                        <p id="dexterity" class="attribute value">+1</p>
+                        <button onclick="decreaseAttribute('dexterity')">-</button>
+                        <button onclick="increaseAttribute('dexterity')">+</button>
+
+                    </div>
+
+                    <div class="layoutRow modifier">
+
+                        <p>Intelligence:</p>
+                        <p id="intelligence" class="attribute value">+1</p>
+                        <button onclick="decreaseAttribute('intelligence')">-</button>
+                        <button onclick="increaseAttribute('intelligence')">+</button>
+
+                    </div>
+
+                    <div class="layoutRow modifier">
+
+                        <p>Wisdom:</p>
+                        <p id="wisdom" class="attribute value">+1</p>
+                        <button onclick="decreaseAttribute('wisdom')">-</button>
+                        <button onclick="increaseAttribute('wisdom')">+</button>
+
+                    </div>
+
+                    <div class="layoutRow modifier">
+
+                        <p>Charisma:</p>
+                        <p id="charisma" class="attribute value">+1</p>
+                        <button onclick="decreaseAttribute('charisma')">-</button>
+                        <button onclick="increaseAttribute('charisma')">+</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="layoutColumn">
+
+                <p>Proficiency</p>
+                <div class="panel modifier">
+    
+                    <div class="layoutColumn">
+    
+                        <div class="layoutRow modifier">
+    
+                            <p>Sword:</p>
+                            <p id="sword" class="proficiency value">0</p>
+                            <button onclick="decreaseProficiencyWeapon('sword')">-</button>
+                            <button onclick="increaseProficiencyWeapon('sword')">+</button>
+    
+                        </div>
+    
+                        <div class="layoutRow modifier">
+    
+                            <p>Dagger:</p>
+                            <p id="dagger" class="proficiency value">0</p>
+                            <button onclick="decreaseProficiencyWeapon('dagger')">-</button>
+                            <button onclick="increaseProficiencyWeapon('dagger')">+</button>
+    
+                        </div>
+    
+                        <div class="layoutRow modifier">
+    
+                            <p>Axe:</p>
+                            <p id="axe" class="proficiency value">0</p>
+                            <button onclick="decreaseProficiencyWeapon('axe')">-</button>
+                            <button onclick="increaseProficiencyWeapon('axe')">+</button>
+    
+                        </div>
+    
+                        <div class="layoutRow modifier">
+    
+                            <p>Hammer:</p>
+                            <p id="hammer" class="proficiency value">0</p>
+                            <button onclick="decreaseProficiencyWeapon('hammer')">-</button>
+                            <button onclick="increaseProficiencyWeapon('hammer')">+</button>
+    
+                        </div>
+    
+                        <div class="layoutRow modifier">
+    
+                            <p>Polearm:</p>
+                            <p id="polearm" class="proficiency value">0</p>
+                            <button onclick="decreaseProficiencyWeapon('polearm')">-</button>
+                            <button onclick="increaseProficiencyWeapon('polearm')">+</button>
+    
+                        </div>
+    
+                        <div class="layoutRow modifier">
+    
+                            <p>Bow:</p>
+                            <p id="bow" class="proficiency value">0</p>
+                            <button onclick="decreaseProficiencyWeapon('bow')">-</button>
+                            <button onclick="increaseProficiencyWeapon('bow')">+</button>
+    
+                        </div>
+    
+                        <div class="layoutRow modifier">
+    
+                            <p>Crossbow:</p>
+                            <p id="crossbow" class="proficiency value">0</p>
+                            <button onclick="decreaseProficiencyWeapon('crossbow')">-</button>
+                            <button onclick="increaseProficiencyWeapon('crossbow')">+</button>
+    
+                        </div>
+    
+                        <div class="layoutRow modifier">
+    
+                            <p>Unarmed:</p>
+                            <p id="unarmed" class="proficiency value">0</p>
+                            <button onclick="decreaseProficiencyWeapon('unarmed')">-</button>
+                            <button onclick="increaseProficiencyWeapon('unarmed')">+</button>
+    
+                        </div>
+    
+                        <div class="layoutRow modifier">
+    
+                            <p>Shield:</p>
+                            <p id="shield" class="proficiency value">0</p>
+                            <button onclick="decreaseProficiencyWeapon('shield')">-</button>
+                            <button onclick="increaseProficiencyWeapon('shield')">+</button>
+    
+                        </div>
+    
+                        <div class="layoutRow modifier">
+    
+                            <p>Armor:</p>
+                            <p id="armor" class="proficiency value">0</p>
+                            <button onclick="decreaseProficiencyWeapon('armor')">-</button>
+                            <button onclick="increaseProficiencyWeapon('armor')">+</button>
+    
+                        </div>
+    
+                        <div class="layoutRow modifier">
+    
+                            <p>Staff:</p>
+                            <p id="staff" class="proficiency value">0</p>
+                            <button onclick="decreaseProficiencyWeapon('staff')">-</button>
+                            <button onclick="increaseProficiencyWeapon('staff')">+</button>
+    
+                        </div>
+    
+                        <div class="layoutRow modifier">
+    
+                            <p>Wand:</p>
+                            <p id="wand" class="proficiency value">0</p>
+                            <button onclick="decreaseProficiencyWeapon('wand')">-</button>
+                            <button onclick="increaseProficiencyWeapon('wand')">+</button>
+    
+                        </div>
+    
+                    </div>
+    
+                </div>
+
+            </div>
+
+            <div class="layoutColumn">
+
+                <p>Magic</p>
+                <div class="panel">
+
+                    <div class="layoutRow modifier">
+
+                        <p>Arcane:</p>
+                        <p id="arcane" class="attribute value">0</p>
+                        <button onclick="decreaseAttribute('arcane')">-</button>
+                        <button onclick="increaseAttribute('arcane')">+</button>
+
+                    </div>
+
+                    <div class="layoutRow modifier">
+
+                        <p>Forbidden:</p>
+                        <p id="forbidden" class="attribute value">0</p>
+                        <button onclick="decreaseAttribute('forbidden')">-</button>
+                        <button onclick="increaseAttribute('forbidden')">+</button>
+
+                    </div>
+
+                    <div class="layoutRow modifier">
+
+                        <p>Spirit:</p>
+                        <p id="spirit" class="attribute value">0</p>
+                        <button onclick="decreaseAttribute('spirit')">-</button>
+                        <button onclick="increaseAttribute('spirit')">+</button>
+
+                    </div>
+
+                    <div class="layoutRow modifier">
+
+                        <p>Holy:</p>
+                        <p id="holy" class="attribute value">0</p>
+                        <button onclick="decreaseAttribute('holy')">-</button>
+                        <button onclick="increaseAttribute('holy')">+</button>
+
+                    </div>
+
+                    <div class="layoutRow modifier">
+
+                        <p>Elemental:</p>
+                        <p id="elemental" class="attribute value">0</p>
+                        <button onclick="decreaseAttribute('elemental')">-</button>
+                        <button onclick="increaseAttribute('elemental')">+</button>
+
+                    </div>
+
+                    <div class="layoutRow modifier">
+
+                        <p>Mental:</p>
+                        <p id="mental" class="attribute value">0</p>
+                        <button onclick="decreaseAttribute('mental')">-</button>
+                        <button onclick="increaseAttribute('mental')">+</button>
+
+                    </div>
+
+                    <div class="layoutRow modifier">
+
+                        <p>Nature:</p>
+                        <p id="nature" class="attribute value">0</p>
+                        <button onclick="decreaseAttribute('nature')">-</button>
+                        <button onclick="increaseAttribute('nature')">+</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="layoutColumn">
+
+                <p>Roguery</p>
+                <div class="panel">
+
+                    <div class="layoutRow modifier">
+
+                        <p>Pickpocket:</p>
+                        <p id="pickpocket" class="roguery value">0</p>
+                        <button onclick="decreaseAttribute('arcane')">-</button>
+                        <button onclick="increaseAttribute('arcane')">+</button>
+
+                    </div>
+
+                    <div class="layoutRow modifier">
+
+                        <p>Lockpick:</p>
+                        <p id="lockpick" class="roguery value">0</p>
+                        <button onclick="decreaseAttribute('forbidden')">-</button>
+                        <button onclick="increaseAttribute('forbidden')">+</button>
+
+                    </div>
+
+                    <div class="layoutRow modifier">
+
+                        <p>Trap:</p>
+                        <p id="trap" class="roguery value">0</p>
+                        <button onclick="decreaseAttribute('spirit')">-</button>
+                        <button onclick="increaseAttribute('spirit')">+</button>
+
+                    </div>
+
+                    <div class="layoutRow modifier">
+
+                        <p>Stealth:</p>
+                        <p id="stealth" class="roguery value">0</p>
+                        <button onclick="decreaseAttribute('holy')">-</button>
+                        <button onclick="increaseAttribute('holy')">+</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        let lastTab = 'guideWelcome'
+        function guideSwitch(tab) {
+            document.getElementById(lastTab).style.display = "none"
+            document.getElementById(tab).style.display = "block"
+            lastTab = tab
+        }
+
+        let lastPage = 'pageHome'
+        function pageSwitch(page) {
+            document.getElementById(lastPage).style.display = "none"
+            document.getElementById(page).style.display = "flex"
+            lastPage = page
+        }
+
+        let map = {size: 100, width: 10, height: 10}
+
+            mapCells = [
+
+                1,1,0,0,1,1,1,1,6,1,
+                1,6,0,0,1,1,1,1,1,1,
+                1,1,0,0,1,1,1,6,1,1,
+                1,1,0,0,1,1,1,1,1,1,
+                1,1,1,1,1,1,0,0,0,1,
+                1,1,1,1,0,2,0,0,0,1,
+                1,1,1,1,0,1,0,1,1,1,
+                1,1,5,1,0,1,0,1,4,1,
+                1,1,1,1,1,1,0,3,1,1,
+                1,1,0,0,0,0,0,1,1,1
+
+            ]
+
+            mapCoordinates = []
+            coordinateIndex = 0
+            playerCoordinate = {x: 0, y: 0}
+
+            tileNone = {value:"0", graphic:"   "}
+            tileEmpty = {value:"1", graphic:"[ ]"}
+            tilePlayer = {value:"2", graphic:"[@]"}
+            tileNPC = {value:"3", graphic:"[&]"}
+            tileBuilding = {value:"4", graphic:"[█]"}
+            tileEnemy = {value:"5", graphic:"[*]"}
+            tileObject = {value:"6", graphic:"[#]"}
+
+        function updateMap() {
+
+            let counter = -1
+            let x = 0
+            let y = 1
+            for (var i = 0; i < mapCells.length; i++) {
+
+                x += 1
+                counter += 1
+
+                if (counter == map['width']) {
+
+                    document.getElementById('map').innerHTML += "<br>"
+                    y += 1
+                    x = 1
+                    counter = 0
+                }
+
+                mapCoordinates.push({x, y})
+
+                if (mapCells[i] == tileNone['value']) {
+                    document.getElementById('map').innerHTML += tileNone['graphic']
+                }
+
+                else if (mapCells[i] == tileEmpty['value']) {
+                    document.getElementById('map').innerHTML += tileEmpty['graphic']
+                }
+
+                else if (mapCells[i] == tilePlayer['value']) {
+                    playerCoordinate = {x, y}
+                    coordinateIndex = mapCells.indexOf(mapCells[i])
+                    document.getElementById('map').innerHTML += tilePlayer['graphic']
+                }
+
+                else if (mapCells[i] == tileBuilding['value']) {
+                    document.getElementById('map').innerHTML += tileBuilding['graphic']
+                }
+
+                else if (mapCells[i] == tileNPC['value']) {
+                    document.getElementById('map').innerHTML += tileNPC['graphic']
+                }
+
+                else if (mapCells[i] == tileEnemy['value']) {
+                    document.getElementById('map').innerHTML += tileEnemy['graphic']
+                }
+
+                else if (mapCells[i] == tileObject['value']) {
+                    document.getElementById('map').innerHTML += tileObject['graphic']
+                }
+            }
+
+            console.log(coordinateIndex)
+                console.log(mapCoordinates[coordinateIndex])
+        }
+
+        function clearMap() {
+            document.getElementById('map').innerHTML = ""
+        }
+
+        let previousCell = 1
+
+        function changeFocus() {
+
+            let newEle
+
+            switch(previousCell) {
+
+                case 1:
+                    document.getElementById('playerFocus').innerHTML = ""
+                    break
+
+                case 3:
+                    document.getElementById('playerFocus').innerHTML = "NPC"
+                    newEle = document.createElement('p')
+                    newEle.innerHTML = "NPC says 'Howdy, adventurer.'"
+                    document.getElementById('output').appendChild(newEle)
+                    document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight
+                    break
+
+                case 4:
+                    document.getElementById('playerFocus').innerHTML = "Building"
+                    newEle = document.createElement('p')
+                    newEle.innerHTML = "Looks like a town."
+                    document.getElementById('output').appendChild(newEle)
+                    document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight 
+                    break
+
+                case 5:
+                    document.getElementById('playerFocus').innerHTML = "Enemy"
+                    newEle = document.createElement('p')
+                    newEle.innerHTML = "(monster snarls at you)"
+                    document.getElementById('output').appendChild(newEle)
+                    document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight
+                    break
+
+                case 6:
+                    document.getElementById('playerFocus').innerHTML = "Object"
+                    newEle = document.createElement('p')
+                    newEle.innerHTML = "Looks like some thing."
+                    document.getElementById('output').appendChild(newEle)
+                    document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight
+                    break
+            }
+        }
+
+        function moveUp() {
+            if (playerCoordinate['y'] >= 2 && mapCells[coordinateIndex - map['width']] != 0) {
+                playerCoordinate['y'] -= 1
+                mapCells[coordinateIndex] = previousCell
+                previousCell = mapCells[coordinateIndex - map['width']]
+                mapCells[coordinateIndex - map['width']] = 2
+                clearMap()
+                updateMap()
+                changeFocus()
+            }
+        }
+
+        function moveDown() {
+            if (playerCoordinate['y'] < map['height'] && mapCells[coordinateIndex + map['width']] != 0) {
+                playerCoordinate['y'] += 1
+                mapCells[coordinateIndex] = previousCell
+                previousCell = mapCells[coordinateIndex + map['width']]
+                mapCells[coordinateIndex + map['width']] = 2
+                clearMap()
+                updateMap()
+                changeFocus()
+            }
+        }
+
+        function moveRight() {
+            if (playerCoordinate['x'] < map['width'] && mapCells[coordinateIndex + 1] != 0) {
+                playerCoordinate['x'] += 1
+                mapCells[coordinateIndex] = previousCell
+                previousCell = mapCells[coordinateIndex + 1]
+                mapCells[coordinateIndex + 1] = 2
+                clearMap()
+                updateMap()
+                changeFocus()
+            }
+        }
+
+        function moveLeft() {
+            if (playerCoordinate['x'] >= 2 && mapCells[coordinateIndex - 1] != 0) {
+                playerCoordinate['x'] -= 1
+                mapCells[coordinateIndex] = previousCell
+                previousCell = mapCells[coordinateIndex - 1]
+                mapCells[coordinateIndex - 1] = 2
+                clearMap()
+                updateMap()
+                changeFocus()
+            }
+        }
+
+        document.addEventListener('keyup', function(event) {
+
+            if (event.keyCode == 38) {
+                moveUp()
+            }
+
+            else if (event.keyCode == 40) {
+                moveDown()
+            }
+
+            else if (event.keyCode == 39) {
+                moveRight()
+            }
+
+            else if (event.keyCode == 37) {
+                moveLeft()
+            }
+        })
+
+        updateMap()
+    
+    </script>
+
+</body>
+
+</html>
